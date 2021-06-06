@@ -112,3 +112,14 @@ class Repository:
         for item in [i for i in self.tags.keys() if i not in self.index["tags"]]:
             print(f"Flushing new tag [{item}]")
             self.IO_trySaveInfo("tags", self.tags[item])
+
+    def IO_init(self):
+        if os.path.exists(f"{self.root}/index"):
+            raise AssertionError("An repository was already created on this folder.")
+
+        if not os.path.exists(self.root):
+            os.makedirs(self.root)
+
+        self.IO_populateIndex()
+        self.IO_populateHead()
+        print(f"An new repository was created in {self.root}.")
