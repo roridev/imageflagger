@@ -78,6 +78,10 @@ class Repository:
 
         return None
 
+    def IO_populateHead(self):
+        with open(f"{self.root}/HEAD", "w+") as fh:
+            fh.writelines(self.head)
+
     def IO_tryLoadInfo(self, t: str, h: str):
         with open(f"{self.root}/{t}/{h[:2]}/{h}", "r+") as fh:
             lines: list[str] = fh.readlines()
