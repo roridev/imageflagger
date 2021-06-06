@@ -82,6 +82,10 @@ class Repository:
         with open(f"{self.root}/HEAD", "w+") as fh:
             fh.writelines(self.head)
 
+    def IO_readHead(self):
+        with open(f"{self.root}/HEAD", "r+") as fh:
+            self.head = fh.readlines()[0]
+
     def IO_tryLoadInfo(self, t: str, h: str):
         with open(f"{self.root}/{t}/{h[:2]}/{h}", "r+") as fh:
             lines: list[str] = fh.readlines()
