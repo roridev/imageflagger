@@ -25,7 +25,9 @@ class Repository:
             print(f"Reference to invalid image detected. {entry.image} does not exist in the repo.")
             return
 
+        entry.parents.append(self.head)
         self.entries[entry.getHash()] = entry
+        self.head = entry.getHash()
         print(f"Added [{entry.getHash()}] {entry.name} {[self.unrefTag(r) for r in entry.tags]}\n"
               f"{entry.description}\n"
               f"Source : {entry.source}")
