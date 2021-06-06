@@ -16,7 +16,7 @@ class Repository:
     index: dict[str, list[str]] = field(default_factory=dict)
 
     def addEntry(self, entry: ImageEntry):
-        if entry.getHash() in self.entries.keys():
+        if entry.getHash() in self.entries:
             print("Nothing to do.")
             return
 
@@ -30,7 +30,7 @@ class Repository:
               f"Source : {entry.source}")
 
     def addTag(self, tag: Tag):
-        if tag.getHash() in self.tags.keys():
+        if tag.getHash() in self.tags:
             print("Nothing to do.")
             return
 
