@@ -10,6 +10,7 @@ from shared.core.tag import Tag
 @dataclass
 class Repository:
     root: str
+    head: str = ""
     objects: list[str] = field(default_factory=list)
     tags: dict[str, Tag] = field(default_factory=dict)
     entries: dict[str, ImageEntry] = field(default_factory=dict)
